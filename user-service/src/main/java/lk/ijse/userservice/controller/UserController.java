@@ -14,7 +14,11 @@ import java.util.Optional;
 @RequestMapping("/api/users")
 public class UserController {
 
-    private final UserService service = new UserService();
+    private final UserService service;
+
+    public UserController(UserService service) {
+        this.service = service;
+    }
 
     @PostMapping("/register")
     public User register(@RequestBody User user) {
@@ -25,7 +29,7 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody User user) {
         Optional<User> loggedIn = service.login(user.getEmail(), user.getPassword());
         if (loggedIn.isPresent()) {
-            String token = JwtUtil.generateToken(loggedIn.get().getId(), loggedIn.get().getRole());
+            String token = JwtUtil.generateToken(loggedIn.get().getId(), loggedIn.get().getRole().name());
             return ResponseEntity.ok(Map.of(
                     "token", token,
                     "userId", loggedIn.get().getId()

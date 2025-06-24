@@ -5,6 +5,22 @@ spring:
   application:
     name: user-service
 
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/user_db
+    username: root
+    password: 0909
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+
 eureka:
   client:
     service-url:

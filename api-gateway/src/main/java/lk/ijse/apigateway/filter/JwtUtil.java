@@ -6,14 +6,16 @@ import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 
 public class JwtUtil {
-    private static final Key SECRET_KEY = Keys.hmacShaKeyFor("12345678901234567890123456789012".getBytes());
 
-    public static String validateTokenAndGetUserId(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(SECRET_KEY)
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
+    private static final String SECRET = "YourSecretKeyMustBeAtLeast256BitsLong!";
+
+    public static boolean validateToken(String token) {
+        try {
+            Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
