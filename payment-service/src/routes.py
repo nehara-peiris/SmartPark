@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify
 from models import db, Payment
-from auth import require_auth
 import uuid
 import requests
 import os
