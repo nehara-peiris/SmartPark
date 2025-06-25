@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ParkingSpaceServiceImpl implements ParkingSpaceService {
@@ -20,9 +21,11 @@ public class ParkingSpaceServiceImpl implements ParkingSpaceService {
 
     @Override
     public ParkingSpace save(ParkingSpace space) {
+        if (space.getId() == null || space.getId().isBlank()) {
+            space.setId(UUID.randomUUID().toString()); // 🔑 Generate ID if not set
+        }
         return repository.save(space);
     }
-
     @Override
     public ParkingSpace update(ParkingSpace space) {
         return repository.save(space); // ID-based overwrite

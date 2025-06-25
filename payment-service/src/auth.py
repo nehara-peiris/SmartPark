@@ -2,7 +2,7 @@ from flask import request, jsonify
 
 def require_auth():
     token = request.headers.get("Authorization")
-    user_id = request.headers.get("x-user-id")
-
-    if not token or not token.startswith("Bearer ") or not user_id:
+    if not token or not token.startswith("Bearer "):
         return jsonify({"error": "Unauthorized"}), 401
+    # No deep validation; API Gateway handles it
+    return None

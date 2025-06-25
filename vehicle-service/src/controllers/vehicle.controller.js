@@ -4,7 +4,7 @@ export const createVehicle = async (req, res) => {
     try {
         const vehicle = await Vehicle.create({
             ...req.body,
-            ownerId: req.user.id // From token
+            ownerId: req.user.id
         });
         res.status(201).json(vehicle);
     } catch (err) {

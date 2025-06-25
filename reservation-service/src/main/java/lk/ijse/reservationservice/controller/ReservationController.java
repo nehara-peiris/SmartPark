@@ -3,6 +3,7 @@ package lk.ijse.reservationservice.controller;
 import lk.ijse.reservationservice.entity.Reservation;
 import lk.ijse.reservationservice.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,12 @@ public class ReservationController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Value("${vehicle.service.url}")
+    private String vehicleServiceUrl;
+
+    @Value("${parking.service.url}")
+    private String parkingServiceUrl;
 
     @GetMapping
     public ResponseEntity<List<Reservation>> getAll(@RequestHeader("x-user-id") String userId) {
@@ -48,7 +55,7 @@ public class ReservationController {
         // Validate Vehicle
         try {
             ResponseEntity<Map> vehicleResponse = restTemplate.exchange(
-                    "http://vehicle-service/api/vehicles/" + reservation.getVehicleId(),
+                    vehicleServiceUrl + "/api/vehicles/" + reservation.getVehicleId(),
                     HttpMethod.GET,
                     entity,
                     Map.class
@@ -58,18 +65,18 @@ public class ReservationController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
             }
 
-            String ownerId = (String) vehicleResponse.getBody().get("userId");
+            String ownerId = (String) vehicleResponse.getBody().get("ownerId");
             if (!userId.equals(ownerId)) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
             }
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 
         // Validate Parking Space
         try {
             ResponseEntity<Map> spaceResponse = restTemplate.exchange(
-                    "http://parking-space-service/api/spaces/" + reservation.getParkingSpaceId(),
+                    parkingServiceUrl + "/api/spaces/" + reservation.getParkingSpaceId(),
                     HttpMethod.GET,
                     entity,
                     Map.class
@@ -103,7 +110,7 @@ public class ReservationController {
         // Validate Vehicle
         try {
             ResponseEntity<Map> vehicleResponse = restTemplate.exchange(
-                    "http://vehicle-service/api/vehicles/" + reservation.getVehicleId(),
+                    vehicleServiceUrl + "/api/vehicles/" + reservation.getVehicleId(),
                     HttpMethod.GET,
                     entity,
                     Map.class
@@ -113,7 +120,7 @@ public class ReservationController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
             }
 
-            String ownerId = (String) vehicleResponse.getBody().get("userId");
+            String ownerId = (String) vehicleResponse.getBody().get("ownerId");
             if (!userId.equals(ownerId)) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
             }
@@ -124,7 +131,7 @@ public class ReservationController {
         // Validate Parking Space
         try {
             ResponseEntity<Map> spaceResponse = restTemplate.exchange(
-                    "http://parking-space-service/api/spaces/" + reservation.getParkingSpaceId(),
+                    parkingServiceUrl + "/api/spaces/" + reservation.getParkingSpaceId(),
                     HttpMethod.GET,
                     entity,
                     Map.class

@@ -18,7 +18,7 @@ spring:
             - Path=/api/users/**
 
         - id: vehicle-service
-          uri: http://localhost:3003
+          uri: lb://vehicle-service
           predicates:
             - Path=/api/vehicles/**
 
@@ -32,6 +32,10 @@ spring:
           predicates:
             - Path=/api/reservations/**
 
+        - id: payment-service
+          uri: http://localhost:5005
+          predicates:
+            - Path=/api/payments/**
 eureka:
   client:
     service-url:

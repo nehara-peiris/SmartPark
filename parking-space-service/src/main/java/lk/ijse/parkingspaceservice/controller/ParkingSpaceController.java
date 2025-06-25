@@ -27,12 +27,16 @@ public class ParkingSpaceController {
         return ResponseEntity.ok(service.save(space));
     }
 
-    @PutMapping
-    public ResponseEntity<ParkingSpace> update(@RequestBody ParkingSpace space,
-                                               @RequestHeader("x-user-id") String userId) {
-        space.setOwnerId(userId); // update with current user if needed
-        return ResponseEntity.ok(service.update(space));
+    @PutMapping("/{id}")
+    public ResponseEntity<ParkingSpace> update(@PathVariable String id, @RequestBody ParkingSpace updatedSpace) {
+        ParkingSpace existing = service.getById(id);
+        if (existing == null) {
+            return ResponseEntity.notFound().build();
+        }
+        updatedSpace.setId(id);
+        return ResponseEntity.ok(service.update(updatedSpace));
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<ParkingSpace> getById(@PathVariable String id,

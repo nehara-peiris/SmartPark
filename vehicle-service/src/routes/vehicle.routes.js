@@ -1,5 +1,4 @@
 import express from 'express';
-import { authenticate } from '../middleware/auth.js';
 import {
     createVehicle,
     getVehicles,
@@ -7,15 +6,16 @@ import {
     updateVehicle,
     deleteVehicle
 } from '../controllers/vehicle.controller.js';
+import { authenticate } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Secure routes with middleware here
-router.post('/', authenticate, createVehicle);
-router.get('/', authenticate, getVehicles);
-router.get('/:id', authenticate, getVehicleById);
-router.put('/:id', authenticate, updateVehicle);
-router.delete('/:id', authenticate, deleteVehicle);
+router.use(authenticate); // secure all routes below
 
+router.post('/', createVehicle);
+router.get('/', getVehicles);
+router.get('/:id', getVehicleById);
+router.put('/:id', updateVehicle);
+router.delete('/:id', deleteVehicle);
 
 export default router;
