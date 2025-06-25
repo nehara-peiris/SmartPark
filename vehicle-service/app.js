@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import vehicleRoutes from './routes/vehicle.routes.js';
+import vehicleRoutes from './src/routes/vehicle.routes.js';
 
 const app = express();
 app.use(express.json());
