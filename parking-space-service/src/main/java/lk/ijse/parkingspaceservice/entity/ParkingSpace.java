@@ -18,5 +18,4 @@ public class ParkingSpace {
     private boolean reserved;
     private String zone;
     private String ownerId;
-
 }

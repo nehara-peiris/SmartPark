@@ -37,5 +37,4 @@ public class JwtAuthFilter implements Filter {
 
         chain.doFilter(request, response);
     }
-
 }

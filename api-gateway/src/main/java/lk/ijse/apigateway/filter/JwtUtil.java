@@ -7,7 +7,7 @@ import java.security.Key;
 
 public class JwtUtil {
 
-    private static final String SECRET = "YourSecretKeyMustBeAtLeast256BitsLong!";
+    private static final String SECRET = "YourSecretKeyMustBeAtLeast256BitsLong!"; // Match with user-service
 
     public static boolean validateToken(String token) {
         try {
@@ -15,6 +15,7 @@ public class JwtUtil {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
         } catch (Exception e) {
+            System.out.println("Token validation failed: " + e.getMessage());
             return false;
         }
     }
