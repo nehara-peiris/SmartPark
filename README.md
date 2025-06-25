@@ -47,14 +47,12 @@ All API endpoints for each microservice have been documented and tested using Po
 
 ---
 
-## 🛰️ Eureka Dashboard
+## 🛰️ Eureka Service Registry
 
-Below is a screenshot showing all microservices registered successfully with Eureka:
+The following screenshot displays the Eureka Dashboard with all microservices successfully registered and discoverable:
 
-![Eureka Dashboard](docs/screenshots/eureka_dashboard.png)
+![Eureka Dashboard](./docs/screenshots/eureka-dashboard.png)
 
-
----
 
 ## 🛠️ Running the Project
 
