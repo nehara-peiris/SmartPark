@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "33e3001f-c351-4806-8162-4040f6662671",
+		"name": "Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40383293"
+	},
+	"item": [
+		{
+			"name": "new payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDg0MTY3NCwiZXhwIjoxNzUwOTI4MDc0fQ.MzS0smYx0BOqt3Z_EiO_wgoOWa6IIPu67e5J6wqaOXo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"d8150be4-5e48-4427-8f3f-8200788e4d21\",\r\n    \"parking_space_id\":\"PARK001\",\r\n    \"amount\":200.00,\r\n    \"payment_method\":\"credit_card\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5005/api/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"api",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pay details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDg0MTY3NCwiZXhwIjoxNzUwOTI4MDc0fQ.MzS0smYx0BOqt3Z_EiO_wgoOWa6IIPu67e5J6wqaOXo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"1234\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5005/api/payments/<payment_id>",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"api",
+						"payments",
+						"<payment_id>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pay details by user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"1234\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5005/api/payments/user/<user_id>",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"api",
+						"payments",
+						"user",
+						"<user_id>"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "082f198b-5253-4cee-a9c6-e5836977fa06",
+		"name": "ParkingSpace",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40383293"
+	},
+	"item": [
+		{
+			"name": "save Space",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDgyMDQyMiwiZXhwIjoxNzUwOTA2ODIyfQ.x85gl-tKd4gGy8YB_iJHIFbpo2cgSgoJ_7cbqm3MUjM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "${userId}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"PARK001\",\r\n  \"location\": \"Colombo 03\",\r\n  \"available\": true,\r\n  \"reserved\": false,\r\n  \"zone\": \"A\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/spaces",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"spaces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all spaces",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDc4MTk5MSwiZXhwIjoxNzODY4MzkxfQ.G2Cws1Dg0CwteHoOUBzoHFikWROphScTzAA8N-AMMy4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "userId",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/spaces",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"spaces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get space by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDc4MTk5MSwiZXhwIjoxNzODY4MzkxfQ.G2Cws1Dg0CwteHoOUBzoHFikWROphScTzAA8N-AMMy4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "userId",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/api/spaces/PARK001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"spaces",
+						"PARK001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update space",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDc4MTk5MSwiZXhwIjoxNzODY4MzkxfQ.G2Cws1Dg0CwteHoOUBzoHFikWROphScTzAA8N-AMMy4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "userId",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"location\": \"Colombo 03\",\r\n  \"available\": true,\r\n  \"reserved\": true,\r\n  \"zone\": \"B\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/spaces/PARK001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"spaces",
+						"PARK001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete space",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDc4MTk5MSwiZXhwIjoxNzODY4MzkxfQ.G2Cws1Dg0CwteHoOUBzoHFikWROphScTzAA8N-AMMy4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "userId",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/spaces/PARK001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"spaces",
+						"PARK001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

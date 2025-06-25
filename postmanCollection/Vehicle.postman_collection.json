@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "04cbdd2d-8c1b-4393-a92e-b602ba530240",
+		"name": "Vehicle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40383293"
+	},
+	"item": [
+		{
+			"name": "get vehicle by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDgyODMwMywiZXhwIjoxNzUwOTE0NzAzfQ.9FUUBulVkh8Di65B-oWVM7f3Q9x5TSwB6TLLflO9pWo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/api/vehicles/685b8678bc597be5daaf5ec2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"vehicles",
+						"685b8678bc597be5daaf5ec2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get vehicles",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDgyODMwMywiZXhwIjoxNzUwOTE0NzAzfQ.9FUUBulVkh8Di65B-oWVM7f3Q9x5TSwB6TLLflO9pWo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/api/vehicles/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"vehicles",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add vehicles",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDgyODMwMywiZXhwIjoxNzUwOTE0NzAzfQ.9FUUBulVkh8Di65B-oWVM7f3Q9x5TSwB6TLLflO9pWo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "<userId>",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"plateNumber\": \"ABC1216\",\r\n  \"type\": \"CAR\",\r\n  \"brand\": \"Toyota\",\r\n  \"model\": \"Corolla\",\r\n  \"color\": \"Blue\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/api/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update vehicle",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDc1NzAzMSwiZXhwIjoxNzUwODQzNDMxfQ.5SvszKwi8B82P1RdxMT7n5q4GUzDaJb27auwL6Z_diI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"plateNumber\": \"ABC1286\",\r\n  \"type\": \"CAR\",\r\n  \"ownerId\": \"5a37c673-4ce9-4cd2-87a4-5da5d8b69428\",\r\n  \"brand\": \"Toyota\",\r\n  \"model\": \"Corolla\",\r\n  \"color\": \"Black\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:3003/api/vehicles/685a724d4ad03508aba4cab8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"vehicles",
+						"685a724d4ad03508aba4cab8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete vehicle",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlNjIyMWEyOS0xYjlkLTQwOGQtYTBjYi1iZDJhYmQ2NWFhNWMiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDE4NDU3NiwiZXhwIjoxNzUwMjcwOTc2fQ.kZAuAeJ2y7fN1GzUEJwWcgZ169lRmfUsnR7AwEebe-4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/api/vehicles/6858770849ea20c3a327265d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"vehicles",
+						"6858770849ea20c3a327265d"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

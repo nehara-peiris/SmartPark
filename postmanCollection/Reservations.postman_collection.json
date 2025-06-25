@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "8a45935c-ce2e-469e-94ca-2d19dee7a312",
+		"name": "Reservations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40383293"
+	},
+	"item": [
+		{
+			"name": "New Reservation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDg0MTY3NCwiZXhwIjoxNzUwOTI4MDc0fQ.MzS0smYx0BOqt3Z_EiO_wgoOWa6IIPu67e5J6wqaOXo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "d8150be4-5e48-4427-8f3f-8200788e4d21",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"RESV1001\",\r\n  \"vehicleId\": \"685b8678bc597be5daaf5ec2\",\r\n  \"parkingSpaceId\": \"PARK001\",\r\n  \"startTime\": \"2025-06-25T10:00:00\",\r\n  \"endTime\": \"2025-06-25T12:00:00\",\r\n  \"active\": true\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/reservations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"reservations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Reservation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDgxMjAyNCwiZXhwIjoxNzUwODk4NDI0fQ.kjFydxpZK76lej8TjAS7EMebij6x_sRT9sum7hdgW0g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "<userId>",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"RESV1001\",\r\n    \"vehicleId\": \"VH123\",\r\n    \"parkingSpaceId\": \"PARK001\",\r\n    \"startTime\": \"2025-06-25T10:00:00\",\r\n    \"endTime\": \"2025-06-25T12:00:00\",\r\n    \"active\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/reservations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"reservations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get reservations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDc4MTcxNCwiZXhwIjoxNzUwODY4MTE0fQ.Np5eoKleGA4f16f22omrs0az9NhmTnM7KelU7_GYclc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "<userId>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8083/api/reservations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"reservations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Reservation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkODE1MGJlNC01ZTQ4LTQ0MjctOGYzZi04MjAwNzg4ZTRkMjEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDgxMjAyNCwiZXhwIjoxNzUwODk4NDI0fQ.kjFydxpZK76lej8TjAS7EMebij6x_sRT9sum7hdgW0g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "userId",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8083/api/reservations/RESV1001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"reservations",
+						"RESV1001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
